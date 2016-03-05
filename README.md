@@ -19,6 +19,7 @@ cp config/config.yml.default config/config.yml
 ```
 bundle install
 rake db:create db:migrate
+rake db:seed
 rails server
 ```
 
