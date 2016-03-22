@@ -21,6 +21,9 @@
 
 zh-TW:
   hello: "Hello world"
+  about_us: "關於我們"
+  search: "搜尋"
+  keyword: "輸入關鍵字"
   activerecord:
     attributes:
       user:

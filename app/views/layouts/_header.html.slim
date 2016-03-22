@@ -41,21 +41,23 @@
               button.btn type="button" onclick="window.location.href='/about';"
                 = link_to about_path do
                   i.fa.fa-info
-                  | 關於我們
+                  | 
+                  = t(:about_us)
               button.btn type="button" onclick="window.location.href='/donate';"
                 = link_to donate_path do
                   i.fa.fa-heart
                   | 支持司改
               button.btn.dropdown-toggle type="button1" data-toggle="dropdown"
                 i.fa.fa-search
-                | 搜尋
+                | 
+                = t(:search)
               ul.dropdown-menu.dropdown-menu-right.dropdown-animation
                 li
                   = search_form_for @article_q, url: articles_path, class: "search-box", role: "search" do |f|
                     .form-group.has-feedback
-                      = f.search_field :title_or_content_cont, class: "form-control", id: "textfield", placeholder: "輸入關鍵字"
+                      = f.search_field :title_or_content_cont, class: "form-control", id: "textfield", placeholder: t(:keyword)
                       i.fa.fa-search.form-control-feedback
-                      = f.submit "搜尋", class: "btn btn-default radius btn-sm"
+                      = f.submit t(:search), class: "btn btn-default radius btn-sm"
 header.header.fixed.clearfix
   .container
     .row
@@ -65,7 +67,10 @@ header.header.fixed.clearfix
             = link_to image_tag("logo.png", alt: "財團法人民間司法改革基金會", id: 'logo'), root_path
             .pull-right
               span.badge
-                = link_to "English", "http://www.jrf.org.tw/newjrf/index_new_e.asp", target: "_blank"
+                - if I18n.locale.to_s == 'zh-TW'
+                  = link_to "English", change_locale_path(0) , method: :post
+                - else
+                  = link_to "中文", change_locale_path(1) , method: :post
 
           .site-slogan 由下而上建立值得人民信賴的司法
       .col-md-9

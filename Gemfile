@@ -64,7 +64,7 @@ gem 'rollbar', '~> 2.5.1'
 gem 'oj', '~> 2.12.14'
 gem "skylight"
 gem 'canonical-rails'
-
+gem 'globalize', '~> 5.0.0'
 source 'https://rails-assets.org' do
   # gem 'rails-assets-jquery'
   # gem 'rails-assets-bootstrap'

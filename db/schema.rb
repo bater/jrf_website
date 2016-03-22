@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205053447) do
+ActiveRecord::Schema.define(version: 20160305084122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20160205053447) do
   end
 
   add_index "articles_keywords", ["article_id", "keyword_id"], name: "index_articles_keywords_on_article_id_and_keyword_id", unique: true, using: :btree
+
+  create_table "catalog_translations", force: :cascade do |t|
+    t.integer  "catalog_id", null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+  end
+
+  add_index "catalog_translations", ["catalog_id"], name: "index_catalog_translations_on_catalog_id", using: :btree
+  add_index "catalog_translations", ["locale"], name: "index_catalog_translations_on_locale", using: :btree
 
   create_table "catalogs", force: :cascade do |t|
     t.string  "name"

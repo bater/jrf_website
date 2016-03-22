@@ -8,7 +8,8 @@ class Catalog < ActiveRecord::Base
   default_scope { order(position: :asc) }
   before_save :set_position
   validates_uniqueness_of :name, message: '請確認名稱沒有重複'
-
+  translates :name
+  accepts_nested_attributes_for :translations
   def set_position
     self.position ||= Catalog.maximum("position").to_i + 1
   end

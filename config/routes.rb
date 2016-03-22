@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :magazine_articles
   resources :columns
   resources :epapers, only: [:show, :index]
+  post '/change_locale/(:locale)', to: 'application#change_locale', as: 'change_locale'
   get "/admin" => redirect("/users/sign_in")
   namespace :admin do
     # root 'admins#index',             via: 'get', as: 'admin'
